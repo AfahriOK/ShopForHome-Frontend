@@ -1,0 +1,52 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: brown;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+}
+
+.title {
+    display: flex;
+    align-self: center;
+    font-size: xx-large;
+    color: orange;
+    font-weight: 600;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    font-weight: 600;
+    color: black;
+}
+
+.links li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.nav-bar hr {
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 10px;
+    background: orange;
+}
+
+.nav-login-cart{
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.nav-login-cart button {
+    background-color: orange;
+    color: black;
+}

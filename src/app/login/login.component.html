@@ -1,0 +1,19 @@
+<div id="content">
+    <div id="title">
+        <h1>Login</h1>
+    </div>
+    <div id="form">
+        <form #loginForm="ngForm" (ngSubmit)="authenticateUser()">
+            <label for="id">Email:</label>
+            <br>
+            <input type="email" required name="email" [(ngModel)]="credentials.email">
+            <br>
+            <label for="password">Password:</label>
+            <br>
+            <input type="password"  required name="password" [(ngModel)]="credentials.password">
+            <br>
+            <button mat-raised-button type="submit" [disabled]="!loginForm.valid">Login</button> OR <button mat-raised-button [disabled]="!loginForm.valid" type="button" (click)="registerUser()">Register</button>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="content">
+    <div class="left-content">
+        <div class="cart">
+            <mat-card>
+                <mat-card-title id="cart-title">Cart</mat-card-title>
+                    @for(product of cartService.getItems(); track product.id){
+                        <mat-card>
+                            <mat-card-content>
+                                <mat-card-title>{{product.name}}</mat-card-title>                         
+                                Price: ${{product.price}}<br>
+                                Quantity: {{product.quantity}}
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-icon-button (click)="cartService.incrementQuantity(product.id)">+</button>
+                                <button mat-icon-button (click)="cartService.decrementQuantity(product.id)">-</button>
+                                <button mat-raised-button color="warn" (click)="deleteFromCart(product)">Remove</button>
+                            </mat-card-actions>
+                        </mat-card>
+                        <br>
+                }
+                Origianl Price: ${{cartService.getTotal()}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="right-content">
+        <mat-card>
+            <mat-card-title id="cart-title">Confirm Checkout</mat-card-title>
+               <form #userForm="ngForm" (ngSubmit)="checkout(userForm)">
+                <mat-form-field>
+                    <mat-label>Coupon:</mat-label>
+                    <input matInput #code name="coupon" type="text" ngModel>
+                </mat-form-field>
+                <mat-card-actions>
+                    <button mat-raised-button type="button" (click)="validateCoupon(code)">Add Coupon</button>
+                </mat-card-actions>
+                Final Price: ${{cartService.getTotal() - (cartService.getTotal() * (discount/100))}}<br><br>
+                <button mat-raised-button>Checkout</button>
+               </form>
+        </mat-card>
+    </div>
+</div>

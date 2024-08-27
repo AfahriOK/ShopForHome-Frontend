@@ -1,0 +1,8 @@
+.right-content{
+    justify-content: center;
+    text-align: center;
+}
+
+mat-card-actions {
+    justify-content: center;
+}

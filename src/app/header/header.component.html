@@ -1,0 +1,16 @@
+<div class="nav-bar">
+    <div class="title">
+        Shop For Home
+    </div>
+    <ul *ngIf="isLoggedIn()" class="links">
+        <li (click)="setMenu('Home')" routerLink="/home">Home<div *ngIf="menu === 'Home'"><hr/></div></li>
+        <li (click)="setMenu('Users')" routerLink="/users" *ngIf="isAdmin()">Users<div *ngIf="menu === 'Users'"><hr/></div></li>
+        <li (click)="setMenu('Reports')" routerLink="/reports" *ngIf="isAdmin()">Reports<div *ngIf="menu === 'Reports'"><hr/></div></li>
+        <li (click)="setMenu('Products')" routerLink="/products" *ngIf="isAdmin()">Products<div *ngIf="menu === 'Products'"><hr/></div></li>
+        <li (click)="setMenu('Coupons')" routerLink="/coupons" *ngIf="isAdmin()">Coupons<div *ngIf="menu === 'Coupons'"><hr/></div></li>
+    </ul>
+    <div *ngIf="isLoggedIn()" class="nav-login-cart">
+        <button mat-icon-button routerLink="/checkout" (click)="setMenu('Checkout')"><mat-icon>shopping_cart_checkout</mat-icon></button>
+        <button mat-raised-button (click)="logout()">Logout</button>
+    </div>
+</div>

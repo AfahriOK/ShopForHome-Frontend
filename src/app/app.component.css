@@ -1,0 +1,11 @@
+app-header {
+height: fit-content;
+margin: 0;
+padding: 0
+}
+
+app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

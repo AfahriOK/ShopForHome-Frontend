@@ -1,0 +1,13 @@
+.footer{
+    display: flex;
+    bottom:0;
+    align-items: center;
+    justify-content: center;
+    background-color: brown;
+    font-weight: 600;
+}
+
+img{
+    height: 40px;
+    width: 40px;
+}

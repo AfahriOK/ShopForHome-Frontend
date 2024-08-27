@@ -1,0 +1,41 @@
+<div class="content">
+    <div class="header">
+        <div class="filter-bar">
+            <ul class="links">
+                <li (click)="filter('All')">All</li>
+                <li (click)="filter('1st Quarter')">1st Quarter</li>
+                <li (click)="filter('2nd Quarter')">2nd Quarter</li>
+                <li (click)="filter('3rd Quarter')">3rd Quarter</li>
+                <li (click)="filter('4th Quarter')">4th Quarter</li>
+            </ul>
+        </div>
+    </div>
+    <div class="left-content">
+        <mat-card>
+            <mat-card-title>Orders</mat-card-title>
+            <mat-card-content>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>User Id</td>
+                            <td>Date</td>
+                            <td>Original Price</td>
+                            <td>Final Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td>{{order.id}}</td>
+                            <td>{{order.user.email}}</td>
+                            <td>{{order.date}}</td>
+                            <td>{{order.originalPrice}}</td>
+                            <td>{{order.finalPrice}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    
+</div>

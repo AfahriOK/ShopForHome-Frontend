@@ -1,0 +1,69 @@
+<div class="page-content">
+    <div class="filter-bar">
+        <ul class="links">
+            <li (click)="filter('All')">All</li>
+            <li (click)="filter('Living Room')">Living Room</li>
+            <li (click)="filter('Bedroom')">Bedroom</li>
+            <li (click)="filter('Dining')">Dining</li>
+            <li (click)="filter('Outdoor')">Outdoor</li>
+        </ul>
+    </div>
+    <div class="body-content">
+        <div class="left-content">
+                    <mat-card *ngFor="let product of products">
+                        <mat-card-content>
+                            <img src={{product.image}} alt="product photo"><br>
+                            <mat-card-title>{{product.name}}</mat-card-title>
+                            {{product.description}}<br>
+                            Price: ${{product.price}}
+                        </mat-card-content>
+                        <mat-card-actions style="justify-content: space-between;">
+                            <button mat-raised-button (click)="addToCart(product)">Add to cart</button>
+                            <button mat-raised-button (click)="addToWishlist(product)">Save for later</button>
+                        </mat-card-actions>
+                    </mat-card>
+        </div>
+        <div class="right-content">
+            <div class="cart">
+                <mat-card>
+                    <mat-card-title id="cart-title">Cart</mat-card-title>
+                        @for(product of cartService.getItems(); track product.id){
+                            <mat-card>
+                                <mat-card-content>
+                                    <mat-card-title>{{product.name}}</mat-card-title>                              
+                                    Price: ${{product.price}}<br>
+                                    Quantity: {{product.quantity}}
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-icon-button (click)="cartService.incrementQuantity(product.id)">+</button>
+                                    <button mat-icon-button (click)="cartService.decrementQuantity(product.id)">-</button>
+                                    <button mat-raised-button color="warn" (click)="deleteFromCart(product)">Remove</button>
+                                </mat-card-actions>
+                            </mat-card>
+                            <br>
+                    }
+                    Total Price: ${{cartService.getTotal()}}
+                </mat-card>
+            </div>
+            <br>
+            <div class="wishlist">
+                <mat-card>
+                    <mat-card-title id="cart-title">Wish List</mat-card-title>
+                    @for(product of wishlistService.getItems(); track product.id){
+                        <mat-card>
+                            <mat-card-content>
+                                <mat-card-title>{{product.name}}</mat-card-title>
+                                Price: ${{product.price}}<br>
+                            </mat-card-content>
+                            <mat-card-actions style="justify-content: space-between;">
+                                <button mat-raised-button (click)="moveToCart(product)">Add to cart</button>
+                                <button mat-raised-button color="warn" (click)="deleteFromWishlist(product)">Remove</button>
+                            </mat-card-actions>
+                        </mat-card>
+                        <br>
+                    }
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

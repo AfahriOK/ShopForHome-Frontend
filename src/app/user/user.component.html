@@ -1,0 +1,78 @@
+<div class="body-content">
+    <div class="left-content">
+        <mat-card>
+            <mat-card-title>User List</mat-card-title>
+            <mat-card-content>
+                <table>
+                    <thead>
+                        <tr>
+                        <td>Id</td>
+                        <td>E-mail</td>
+                        <td>roles</td>
+                        <td>Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            [@for (role of user.roles; track $index) {
+                                {{role.name}},
+                            }]
+                        </td>
+                        <td>
+                            <button mat-raised-button id="updateBtn" (click)="displayForm(user)">Update</button>
+                            <button mat-raised-button color="warn"  (click)="deleteUser(user.id)">Delete</button>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="right-content">
+        <div class="form" *ngIf="!isUpdating">
+            <mat-card>
+                <mat-card-title id="cart-title">Add New User</mat-card-title>
+                   <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+                    <mat-form-field>
+                        <mat-label>Email:</mat-label>
+                        <input matInput name="email" type="text"  required ngModel>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password:</mat-label>
+                        <input matInput name="password" type="password" required ngModel>
+                    </mat-form-field>
+                        <mat-checkbox name="roles" labelPosition="before" value="ADMIN" ngModel>ADMIN</mat-checkbox>
+                    <mat-card-actions>
+                        <button mat-raised-button [disabled]="!userForm.valid">Add User</button>
+                    </mat-card-actions>
+                    
+                   </form>
+            </mat-card>
+        </div>
+        <div class="form" *ngIf="isUpdating">
+            <mat-card>
+                <mat-card-title id="cart-title">Update User {{user.id}}</mat-card-title>
+                   <form #userForm="ngForm" (ngSubmit)="updateUser(userForm)">
+                    <input type="hidden" name="id" [(ngModel)]="user.id">
+                    <mat-form-field>
+                        <mat-label>Email:</mat-label>
+                        <input matInput name="email" type="text"  required [(ngModel)]="user.email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password:</mat-label>
+                        <input matInput name="password" type="password" required [(ngModel)]="user.password">
+                    </mat-form-field>
+                        <mat-checkbox name="roles" labelPosition="before" value="ADMIN" ngModel>ADMIN</mat-checkbox>
+                    <mat-card-actions>
+                        <button mat-raised-button [disabled]="!userForm.valid">Update User</button>
+                        <button mat-raised-button type="button" color="warn" (click)="cancel()">Cancel</button>
+                    </mat-card-actions>
+                    
+                   </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="body-content">
+    <div class="left-content">
+                <mat-card *ngFor="let coupon of coupons">
+                    <mat-card-content>
+                        <mat-card-title>ID: {{coupon.id}}</mat-card-title>
+                        ID: {{coupon.id}}<br>
+                        Code: {{coupon.code}}<br>
+                        Discount Percent: {{coupon.discountPercent}}<br>
+                        Expires: {{coupon.expDate}}<br>
+                    </mat-card-content>
+                    <mat-card-actions style="justify-content: space-between;">
+                        <button mat-raised-button (click)="displayForm(coupon)">Edit</button>
+                        <button id="deleteBtn" mat-raised-button color="warn" (click)="deleteCoupon(coupon.id)">Delete</button>
+                    </mat-card-actions>
+                </mat-card>
+    </div>
+    <div class="right-content">
+        <div class="form" *ngIf="!isUpdating">
+            <mat-card>
+                <mat-card-title id="cart-title">Add New Coupon</mat-card-title>
+                    <form #addForm="ngForm" (ngSubmit)="addCoupon(addForm)">
+                    <mat-form-field>
+                        <mat-label>Code:</mat-label>
+                        <input matInput name="code" type="text"  required ngModel>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Expiration Date:</mat-label>
+                        <input matInput name="expDate" type="date" required ngModel>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Discount Percent:</mat-label>
+                        <input matInput name="discountPercent" type="number" required ngModel>
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <button mat-raised-button>Save</button>
+                    </mat-card-actions>
+                    
+                    </form>
+            </mat-card>
+        </div>
+        <div class="form" *ngIf="isUpdating">
+            <mat-card>
+                <mat-card-title id="cart-title">Update Coupon {{coupon.id}}</mat-card-title>
+                    <form #updateForm="ngForm" (ngSubmit)="updateCoupon(updateForm)">
+                        <input type="hidden" name="id" [(ngModel)]="coupon.id">
+                        <mat-form-field>
+                            <mat-label>Code:</mat-label>
+                            <input matInput name="code" type="text"  required [(ngModel)]="coupon.code">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Expiration Date:</mat-label>
+                            <input matInput name="expDate" type="date" required [(ngModel)]="coupon.expDate">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Discount:</mat-label>
+                            <input matInput name="discountPercent" type="number" required [(ngModel)]="coupon.discountPercent">
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-raised-button>Confirm</button>
+                            <button mat-raised-button type="button" color="warn" (click)="cancel()">Cancel</button>
+                        </mat-card-actions>
+                    </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
