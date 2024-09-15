@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1. It contains all of the client-side logic for interacting with my spring boot rest api backend.
 
-#Requirements
+# Requirements
 
 The overall requirements for this project were to create 2 types of users (normal and admin) with the following functionalaity.
 
