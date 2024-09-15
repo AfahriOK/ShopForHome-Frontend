@@ -22,3 +22,8 @@ The overall requirements for this project were to create 2 types of users (norma
 4. As an Admin I should be to get the stocks of items.
 5. As an Admin I should be to get the sales report for each fiscal quarter.
 6. As an Admin I should be to perform CRUD on the coupons.
+
+# Reflections
+
+I already had experience working with Angular but with a previous version and I used templates to style my pages before. This project helped me to learn the newer features of the updated version and gave me a lot of practice in creating my own HTML pages and styling them using Angular Material and CSS.
+
