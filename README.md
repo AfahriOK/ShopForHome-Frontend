@@ -1,6 +1,6 @@
 # ShopForHome-Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1. It contains all of the client-side logic for interacting with my spring boot rest api backend.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1. It contains all of the client-side logic for interacting with my ShopForHome-Backend rest API.
 
 # Requirements
 
