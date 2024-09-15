@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Requirements
 
-The overall requirements for this project were to create 2 types of users (normal and admin) with the following functionalaity.
+The overall requirements for this project were to create 2 types of users (normal and admin) with the following functionality.
 
 ## User Stories
 1. As a user I should be able to login, logout, and register into the application.
